@@ -29,7 +29,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/index.php';
 // Настраиваем журналирование MODX: сообщения записываются в файл, а не в HTML-ответ
 $modx->getService('error', 'error.modError');
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
-$modx->setLogTarget('FILE');
+$modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
 
 // Логирование для отладки
 ini_set('error_log', '/tmp/export_errors.log');
