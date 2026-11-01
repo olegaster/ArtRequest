@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<model version="1.1" package="artrequest" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM">
+	<object class="ArtRequestRequest" extends="xPDOSimpleObject" table="artrequest_requests">
+		<field key="createdon" phptype="datetime" dbtype="datetime" null="false" />
+		<field key="clientemail" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="clientip" phptype="string" dbtype="varchar" precision="20" null="false" />
+		<field key="hidden" phptype="boolean" dbtype="bool" null="false" />
+		
+		<field key="contacts" phptype="string" dbtype="text" null="false" />
+		
+		<field key="letter" phptype="string" dbtype="varchar" precision="255" null="false" />
+		
+		<composite alias="Persons" class="ArtRequestPerson" local="id" foreign="request" cardinality="many" owner="local" />
+		<composite alias="OrgPersons" class="ArtRequestOrgPerson" local="id" foreign="request" cardinality="many" owner="local" />
+	</object>
+	
+	<object class="ArtRequestPerson" extends="xPDOSimpleObject" table="artrequest_persons">
+		<field key="request" phptype="integer" dbtype="int" attributes="unsigned" null="false" />
+		
+		<field key="name" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="ismale" phptype="boolean" dbtype="bool" null="false" />
+		<field key="birthdate" phptype="date" dbtype="date" null="false" />
+		
+		<field key="federalsubject" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="city" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="address" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="postal" phptype="string" dbtype="varchar" precision="20" null="false" />
+		
+		<field key="reason" phptype="integer" dbtype="tinyint" attributes="unsigned" null="false" />
+		
+		<field key="awards" phptype="string" dbtype="text" null="false" />
+		<field key="contacts" phptype="string" dbtype="text" null="false" />
+		
+		<field key="photo" phptype="string" dbtype="varchar" precision="255" null="false" />
+		
+		<field key="work1" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work1name" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work1about" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work1framing" phptype="string" dbtype="varchar" precision="255" null="false" />
+		
+		<field key="work2" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work2name" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work2about" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work2framing" phptype="string" dbtype="varchar" precision="255" null="false" />
+		
+		<field key="work3" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work3name" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work3about" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work3framing" phptype="string" dbtype="varchar" precision="255" null="false" />
+		
+		<aggregate alias="Request" class="ArtRequestRequest" local="request" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+	
+	<object class="ArtRequestOrgPerson" extends="xPDOSimpleObject" table="artrequest_orgpersons">
+		<field key="request" phptype="integer" dbtype="int" attributes="unsigned" null="false" />
+		
+		<field key="name" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="ismale" phptype="boolean" dbtype="bool" null="false" />
+		<field key="birthdate" phptype="date" dbtype="date" null="false" />
+		
+		<field key="federalsubject" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="city" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="address" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="postal" phptype="string" dbtype="varchar" precision="20" null="false" />
+		
+		<field key="reason" phptype="integer" dbtype="tinyint" attributes="unsigned" null="false" />
+		
+		<field key="awards" phptype="string" dbtype="text" null="false" />
+		<field key="contacts" phptype="string" dbtype="text" null="false" />
+		
+		<field key="photo" phptype="string" dbtype="varchar" precision="255" null="false" />
+		
+		<field key="work1" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work1name" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work1about" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work1framing" phptype="string" dbtype="varchar" precision="255" null="false" />
+		
+		<field key="work2" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work2name" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work2about" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work2framing" phptype="string" dbtype="varchar" precision="255" null="false" />
+		
+		<field key="work3" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work3name" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work3about" phptype="string" dbtype="varchar" precision="255" null="false" />
+		<field key="work3framing" phptype="string" dbtype="varchar" precision="255" null="false" />
+		
+		<aggregate alias="Request" class="ArtRequestRequest" local="request" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+</model>
