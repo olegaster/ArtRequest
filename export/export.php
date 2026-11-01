@@ -1,4 +1,10 @@
 <?php
+// Защита бинарного ответа Excel от случайного вывода PHP/MODX
+ini_set('display_errors', '0');
+ini_set('log_errors', '1');
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+ob_start();
+
 // COOKIE-BASED DOWNLOAD DETECTION
 if (isset($_GET['downloadToken'])) {
     $downloadToken = $_GET['downloadToken'];
@@ -20,15 +26,12 @@ if (isset($_GET['downloadToken'])) {
 define('MODX_API_MODE', true);
 require $_SERVER['DOCUMENT_ROOT'].'/index.php';
 
-// Включаем обработку ошибок
-$modx->getService('error','error.modError');
+// Настраиваем журналирование MODX: сообщения записываются в файл, а не в HTML-ответ
+$modx->getService('error', 'error.modError');
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
-$modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
+$modx->setLogTarget('FILE');
 
 // Логирование для отладки
-ini_set('display_errors', 0); // Отключаем вывод ошибок (для корректного headers)
-error_reporting(E_ALL);
-ini_set('log_errors', 1);
 ini_set('error_log', '/tmp/export_errors.log');
 
 // 🔥 УВЕЛИЧЕННЫЕ ЛИМИТЫ для reason=0 (много данных)
@@ -560,6 +563,11 @@ $reasonText = $selectedReason === 'all' ? 'Все_номинации' : $reasonM
 $filename = 'Заявки_' . $reasonText . '_' . date('Y-m-d') . '.xls';
 
 error_log("Generating file: {$filename}");
+
+// Удаляем возможный случайный вывод MODX/PHP перед отправкой бинарного файла
+while (ob_get_level() > 0) {
+    ob_end_clean();
+}
 
 // Отправка файла
 header('Content-Type: application/vnd.ms-excel');
