@@ -37,7 +37,7 @@ ini_set('max_execution_time', '600');  // Увеличено с 300 (10 мину
 set_time_limit(600);
 
 // Подключаем PHPExcel
-require_once 'PHPExcel/PHPExcel.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 // Путь к лог-файлу
 $logFilePath = '../core/components/artrequest/orders.log';
