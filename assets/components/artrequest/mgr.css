@@ -1,0 +1,66 @@
+.x-grid3-row-dimmed .x-grid3-cell
+{
+	color: gray;
+	filter: alpha(opacity=50);
+	font-style: italic;
+	opacity: .5;
+}
+
+.x-grid3-row-dimmed .red,
+.x-grid3-row-dimmed .green
+{
+	color: gray !important;
+}
+
+.x-grid3-row-dimmed .x-grid3-cell.x-grid3-td-checker
+{
+	font-style: normal;
+}
+
+.x-item-disabled
+{
+	filter: alpha(opacity=40);
+	opacity: .4;
+}
+
+label.x-item-disabled
+{
+	color: gray !important;
+}
+
+.x-form-label-top .x-form-item.x-hide-label:first-child
+{
+	padding-top: 0 !important;
+}
+
+.sort-asc .x-grid3-hd-inner:after,
+.sort-desc .x-grid3-hd-inner:after
+{
+	color: #888;
+	font-family: FontAwesome;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	margin-left: .3em;
+}
+
+.sort-asc .x-grid3-hd-inner:after
+{
+	content: '\f0d8';
+}
+
+.sort-desc .x-grid3-hd-inner:after
+{
+	content: '\f0d7';
+}
+
+.sort-asc .x-grid3-sort-icon,
+.sort-desc .x-grid3-sort-icon
+{
+	display: none;
+}
+
+.x-form-field-wrap .x-form-open-trigger:before
+{
+	content: '\f06e';
+}

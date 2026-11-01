@@ -1,0 +1,28 @@
+#requestFormApplicants .btn
+{
+	margin-right: .5em;
+}
+
+#requestFormApplicants .btn.active
+{
+	background: #2c8ce0;
+	border-color: transparent;
+	box-shadow: none;
+	color: #fff;
+}
+
+#requestFormApplicants .well.even
+{
+	background: #faf7e6;
+}
+
+#requestFormContacts.well
+{
+	background: #edf7ff;
+}
+
+#requestForm .btn .fa-plus,
+#requestForm .btn .fa-times
+{
+	margin-right: .6em;
+}
